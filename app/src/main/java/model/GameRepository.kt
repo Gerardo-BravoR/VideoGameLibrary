@@ -1,6 +1,9 @@
 package model
 
 import com.example.videogamelibrary.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 class GameRepository {
@@ -14,7 +17,22 @@ class GameRepository {
         VideoGame("Minecraft", "Multiplataforma", R.drawable.minecraft, 2011)
     )
 
-    fun getRandomGame(): VideoGame {
-        return games[Random.nextInt(games.size)]
+    suspend fun getRandomGame(): Result<VideoGame> = withContext(Dispatchers.IO)
+    {
+        //simula latencia: 2000 a 5000ms
+        val ms = Random.nextLong(2000L, 5001L)
+        delay(ms)
+
+        //20% de probabilidad de fallar
+        val falla = Random.nextInt(100) < 20
+        if(falla)
+        {
+            Result.failure(Exception("Error de conexión: servidor saturado"))
+        }
+        else
+        {
+            val game = games[Random.nextInt(games.size)]
+            Result.success(game)
+        }
     }
 }

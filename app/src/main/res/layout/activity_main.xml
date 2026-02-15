@@ -32,7 +32,6 @@
         android:textSize="16sp"
         android:layout_marginTop="6dp" />
 
-    <!-- Reto de oro: año -->
     <TextView
         android:id="@+id/tvYear"
         android:layout_width="wrap_content"
@@ -42,11 +41,44 @@
         android:textSize="14sp"
         android:layout_marginTop="4dp" />
 
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listo"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp" />
+
+    <!-- barra horizontal -->
+    <ProgressBar
+        android:id="@+id/pbDownload"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone"
+        android:layout_marginTop="10dp" />
+
     <Button
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Siguiente Juego"
         android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btnBulk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carga Masiva"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>
