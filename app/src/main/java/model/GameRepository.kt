@@ -35,4 +35,16 @@ class GameRepository {
             Result.success(game)
         }
     }
+
+    suspend fun fetchGames(count: Int = 5): Result<List<VideoGame>> = withContext(Dispatchers.IO)
+    {
+        if((1..5).random() == 1)
+        {
+            return@withContext Result.failure(Exception("Error aleatorio del servidor"))
+        }
+        delay(Random.nextLong(2000L, 5001L))
+
+        val unique = games.shuffled().take(minOf(count, games.size))
+        Result.success(unique)
+    }
 }
